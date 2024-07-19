@@ -8,7 +8,7 @@ const fetchUser = (req, res, next) => {
     if (!token) {
       res.status(401).json({
         status: "fail",
-        message: "please authenticvate using valid token",
+        message: "please authenticate using valid token",
       });
     }
 
