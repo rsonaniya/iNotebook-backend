@@ -38,8 +38,11 @@ exports.createUser = async (req, res) => {
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
+
   try {
     let user = await User.findOne({ email });
+    console.log(user);
+
     if (!user) {
       return res.status(400).json({
         status: "fail",
@@ -56,6 +59,7 @@ exports.login = async (req, res) => {
     }
 
     const data = { user: user._id };
+
     const authToken = jwt.sign(data, JWT_SECRET);
     res.json({
       status: "success",
